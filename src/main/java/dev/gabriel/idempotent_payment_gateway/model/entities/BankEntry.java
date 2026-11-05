@@ -18,10 +18,13 @@ public class BankEntry {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    // Many AccountTransactions → One BankTransaction: One bank transaction can generate multiple account ledger entries.
+    // Many AccountTransactions → One BankAccount: One bank account can have many transaction records over time.
     @ManyToOne
     @JoinColumn(name = "transaction_id")
     private BankTransaction transaction;
 
+    //@OneToOne @ManyToOne @OneToMany @ManyToMany
     @ManyToOne
     @JoinColumn(name = "account_id")
     private BankAccount account;

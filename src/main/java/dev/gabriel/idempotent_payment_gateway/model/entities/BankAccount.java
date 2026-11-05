@@ -27,7 +27,9 @@ public class BankAccount {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    // before first insert
     @PrePersist
+    // @PreUpdate  @PostPersist  @PostLoad
     public void prePersist() {
         if (createdAt == null) createdAt = LocalDateTime.now();
         if (balance == null) balance = BigDecimal.ZERO;

@@ -19,3 +19,10 @@ public class RedisConfig {
         return template;
     }
 }
+//RedisConnectionFactory	How does the application establish a connection to Redis?
+//StringRedisSerializer	How do we serialize Redis keys into human-readable strings?
+//GenericJackson2JsonRedisSerializer	How do we convert Java objects into JSON when storing them in Redis, and deserialize JSON back into Java objects when retrieving them?
+//account:1001	Account
+//transaction:T001	Transaction
+//payment:lock:001	String
+//balance:1001	BigDecimal

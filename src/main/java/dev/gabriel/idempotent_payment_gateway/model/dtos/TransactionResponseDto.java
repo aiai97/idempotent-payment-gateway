@@ -9,3 +9,11 @@ public record TransactionResponseDto(
         BigDecimal newBalance,
         String message
 ) {}
+//status	message
+//SUCCESS	Transfer completed successfully
+//FAILED	Insufficient account balance
+//PENDING	Transaction is being processed
+//transactionId	Which transaction?
+//status	What is the result?
+//newBalance	What is the balance after the transaction?
+//message	What happened?

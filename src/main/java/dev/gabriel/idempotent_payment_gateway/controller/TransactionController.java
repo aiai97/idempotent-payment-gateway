@@ -24,6 +24,7 @@ public class TransactionController {
     private final TransactionService transactionService;
     private final IdempotencyService idempotencyService;
 
+    // frontend generate Idempotency-Key
     @PostMapping
     @Operation(summary = "Process a transaction", description = "debits or credits an account. guarantees idempotency via key.")
     @ApiResponses(value = {
