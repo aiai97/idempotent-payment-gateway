@@ -12,6 +12,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+// which account , who owns the account, how much it has, when it was created and updated
 public class BankAccount {
 
     @Id

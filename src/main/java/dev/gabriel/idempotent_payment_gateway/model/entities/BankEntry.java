@@ -13,6 +13,8 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+// the transaction is about which account, and when the amount is how much is credited or debited from that account.
+// The transaction itself can have multiple entries, one for each account involved in the transaction.
 public class BankEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

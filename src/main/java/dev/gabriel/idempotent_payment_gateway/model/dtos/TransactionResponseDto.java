@@ -12,7 +12,7 @@ public record TransactionResponseDto(
 //status	message
 //SUCCESS	Transfer completed successfully
 //FAILED	Insufficient account balance
-//PENDING	Transaction is being processed
+//PENDING	Transaction is being processedl
 //transactionId	Which transaction?
 //status	What is the result?
 //newBalance	What is the balance after the transaction?

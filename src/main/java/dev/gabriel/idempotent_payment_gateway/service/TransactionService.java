@@ -26,6 +26,23 @@ public class TransactionService {
     private final BankEntryRepository entryRepository;
 
     /**
+     *
+     * record a transaction (debit or credit) for a specific account.
+     * 1, check input: transaction type and the amount(>=0) and the account id is valid
+     * 2, get the account by id, lock it in case concurrent request change it during check + modify
+     * 3, update(or create) the records(account amount + which account + which ledger entry) and persist it in the db
+     * 4, users need to know the updated account balance for the transaction and should provide detailed messages for the action detail
+     *
+     * Transaction = What business transaction happened?
+     * Ledger Entry = How did this transaction affect the account?
+     *
+     * id	transaction_type	amount	status
+     * T001	TRANSFER	100.00	SUCCESS
+     *
+     * id	transaction_id	account_id	amount
+     * AT001	T001	A001	-100.00
+     * AT002	T001	A002	+100.00
+     *
      * processes a transaction (debit or credit) for a specific account.
      * <p>
      * this method performs the following steps atomically:
@@ -41,7 +58,7 @@ public class TransactionService {
      */
     @Transactional // either completes fully or rolls back
     public TransactionResponseDto processTransaction(TransactionRequestDto request) {
-        // search for account, locking it for update
+        // if processing account is invalid, it will throw an exception
         BankAccount account = accountRepository
                 .findByIdWithLock(request.accountId())
                 .orElseThrow(() -> new IllegalArgumentException("account not found"));
